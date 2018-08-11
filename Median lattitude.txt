@@ -1,0 +1,12 @@
+/* Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to 4 decimal places. */
+
+SELECT ROUND(AVG(S.LAT_N), 4)
+    FROM station S
+    WHERE (
+            (SELECT COUNT(S1.LAT_N)
+                FROM station S1
+                WHERE S.LAT_N < S1.LAT_N) - 
+            (SELECT COUNT(S2.LAT_N)
+                FROM station S2
+                WHERE S.LAT_N > S2.LAT_N)
+        ) IN (-1, 0, 1);
