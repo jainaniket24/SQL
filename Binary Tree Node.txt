@@ -8,8 +8,8 @@ Inner: If node is neither root nor leaf node.
 */
 
 SELECT DISTINCT a.N, 
-        CASE WHEN a.P IS NULL THEN 'Root'
-             WHEN b.P IS NULL THEN 'Leaf' 
+        CASE WHEN a.P IS NULL THEN 'Tree Root'
+             WHEN b.P IS NULL THEN 'Tree Leaf' 
              ELSE 'Inner' END
     FROM BST a LEFT JOIN BST b ON 
             a.N = b.P
